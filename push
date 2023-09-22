@@ -1,0 +1,13 @@
+#!/bin/ash
+dir_key=Hitch-Blogger
+echo 'Push site'
+jekyll clean
+jekyll build
+sleep 2
+
+rm -rf /Server/jafe.pages/"$dir_key"/*
+cp -r _site/* /Server/jafe.pages/"$dir_key"/
+
+git add .
+git commit -m 'update'
+git push -f
